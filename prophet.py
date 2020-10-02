@@ -8,9 +8,9 @@ import sys
 data_file_path = '~/Projects/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
 data = pd.read_csv(data_file_path)
 
-mean = data.iloc[0:, 4:100].values.mean()
-data_x = data.iloc[0:, 4:99].values / mean
-data_y = data.iloc[0:, 5:100].values / mean
+mean = data.iloc[0:, 4:150].values.mean()
+data_x = data.iloc[0:, 4:149].values / mean
+data_y = data.iloc[0:, 5:150].values / mean
 
 model = Sequential()
 model.add(Dense(1024, input_shape=(1,), activation='relu', kernel_initializer='normal'))
@@ -19,7 +19,7 @@ model.compile(loss='mse', optimizer='adam')
 
 best_gen = (0, 1000000)
 for i in range(0, 5):
-    history = model.fit(data_x[:, :-10].flatten(), data_y[:, :-10].flatten(), epochs=64, verbose=1, batch_size=1024)
+    history = model.fit(data_x[:, :-10].flatten(), data_y[:, :-10].flatten(), epochs=64, verbose=1, batch_size=10240)
     mse = model.evaluate(data_x[:, -10:].flatten(), data_y[:, -10:].flatten())
     if mse < best_gen[1]:
         best_gen = (i, mse)
@@ -50,8 +50,8 @@ model1.predict(np.array([335882]))
 model1.predict(np.array([922853])) #927745
 model1.predict(np.array([1030690]))
 
-s = 200
-for i in range(0, 100):
+s = 220
+for i in range(0, 30):
     n = model1.predict(np.array([s]))[0][0]
     print(n)
     s = n
