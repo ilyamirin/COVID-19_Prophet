@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sys
 
-data_file_path = '~/Projects/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
+data_file_path = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
 data = pd.read_csv(data_file_path)
 
 mean = data.iloc[0:, 4:150].values.mean()
