@@ -19,7 +19,7 @@ model.compile(loss='mse', optimizer='adam')
 
 best_gen = (0, 1000000)
 for i in range(0, 5):
-    history = model.fit(data_x[:, :-10].flatten(), data_y[:, :-10].flatten(), epochs=64, verbose=1, batch_size=10240)
+    history = model.fit(data_x[:, :-10].flatten(), data_y[:, :-10].flatten(), epochs=64, verbose=1, batch_size=20000)
     mse = model.evaluate(data_x[:, -10:].flatten(), data_y[:, -10:].flatten())
     if mse < best_gen[1]:
         best_gen = (i, mse)
