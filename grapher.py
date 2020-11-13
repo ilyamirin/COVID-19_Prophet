@@ -6,7 +6,7 @@ from tqdm import tqdm
 import numpy
 import sys
 
-plt.rcParams['figure.figsize'] = [100, 100]
+plt.rcParams['figure.figsize'] = [19.20, 10.80]
 numpy.random.seed(1488)
 
 data_file_path = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
